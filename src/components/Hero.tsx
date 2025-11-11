@@ -91,7 +91,7 @@ const Hero = () => {
       className="overflow-hidden relative bg-cover" 
       id="hero" 
       style={{
-        backgroundImage: 'url("/Header-background.webp")',
+        backgroundImage: 'url("/Header-background.png")',
         backgroundPosition: 'center 30%', 
         padding: isMobile ? '100px 12px 40px' : '120px 20px 60px'
       }}
@@ -133,7 +133,7 @@ const Hero = () => {
                 href="#contato" 
                 className="flex items-center justify-center group w-full sm:w-auto text-center" 
                 style={{
-                  backgroundColor: '#FE5C02',
+                  backgroundColor: '#007B83',
                   borderRadius: '1440px',
                   boxSizing: 'border-box',
                   color: '#FFFFFF',
@@ -179,12 +179,12 @@ const Hero = () => {
               <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
                 <img 
                   ref={imageRef} 
-                  src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
+                  src="/lovable-uploads//ChatGPT Image 11 de nov. de 2025, 10_50_23.png" 
                   alt="Atlas Robot" 
                   className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
                   style={{ transformStyle: 'preserve-3d' }} 
                 />
-                <div className="absolute inset-0" style={{ backgroundImage: 'url("/hero-image.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', mixBlendMode: 'overlay', opacity: 0.5 }}></div>
+                <div className="absolute inset-0" style={{ backgroundImage: 'url("/ChatGPT Image 11 de nov. de 2025, 10_50_23.png")', backgroundSize: 'cover', backgroundPosition: 'center', mixBlendMode: 'overlay', opacity: 0.5 }}></div>
               </div>
               </>
             )}

@@ -138,9 +138,13 @@
     background-position: center;
   }
 
-  .pulse-chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-pulse-100 text-pulse-600 border border-pulse-200;
-  }
+ .pulse-chip {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border;
+  background-color: #E6F7F8; /* tom suave de fundo */
+  color: #007B83;           /* texto e ícones */
+  border-color: #007B83;    /* borda */
+}
+
   
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12;
