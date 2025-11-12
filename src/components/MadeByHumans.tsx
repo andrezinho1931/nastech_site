@@ -23,7 +23,7 @@ const MadeByHumans = () => {
                text-3xl sm:text-5xl md:text-6xl lg:text-7xl 
                leading-tight"
   >
-    Feita por pessoas, movida por IA.
+    Feito por pessoas, movido por IA.
   </h2>
 </div>
 

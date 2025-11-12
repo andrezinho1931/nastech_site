@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { Check, Instagram, Mail, MessageCircleX } from "lucide-react";
+import { Check, Instagram, Mail, Smartphone } from "lucide-react";
 
 const CTA = () => {
 
@@ -168,8 +168,8 @@ Solicitação enviada através do Nastech Site`;
                   href="https://wa.me/351928141891?text=Olá!%20Quero%20automatizar%20minha%20empresa." 
                   className="flex items-center gap-3 text-gray-700 hover:text-pulse-500 transition-colors duration-200"
                 >
-                  <MessageCircleX  className="h-6 w-6 text-slate-900" />
-                  <span className="text-base font-medium">contato</span>
+                  <Smartphone  className="h-6 w-6 text-slate-900" />
+                  <span className="text-base font-medium">whatssap</span>
                 </a>
               </div>
               {/* Fim Contatos Adicionais */}
