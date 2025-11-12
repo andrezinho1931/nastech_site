@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { Check } from "lucide-react";
+import { Check, Instagram, Mail, MessageCircleX } from "lucide-react";
 
 const CTA = () => {
 
@@ -140,6 +140,39 @@ Solicitação enviada através do Nastech Site`;
                   </div>
                 ))}
               </div>
+
+               {/* Contatos Adicionais */}
+              <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-start items-start sm:items-center gap-6">
+                {/* Instagram */}
+                <a 
+                  href="https://instagram.com/nastech.ai" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-3 text-gray-700 hover:text-pulse-500 transition-colors duration-200"
+                >
+                  <Instagram className="h-6 w-6 text-slate-900" />
+                  <span className="text-base font-medium">@nastech.ai</span>
+                </a>
+                
+                {/* Email */}
+                <a 
+              
+                  className="flex items-center gap-3 text-gray-700 hover:text-pulse-500 transition-colors duration-200"
+                >
+                  <Mail className="h-6 w-6 text-slate-900" />
+                  <span className="text-base font-medium">geral.nastech@gmail.com</span>
+                </a>
+
+                  {/* Whats */}
+                <a 
+                  href="https://wa.me/351928141891?text=Olá!%20Quero%20automatizar%20minha%20empresa." 
+                  className="flex items-center gap-3 text-gray-700 hover:text-pulse-500 transition-colors duration-200"
+                >
+                  <MessageCircleX  className="h-6 w-6 text-slate-900" />
+                  <span className="text-base font-medium">contato</span>
+                </a>
+              </div>
+              {/* Fim Contatos Adicionais */}
 
             </div>
           </div>

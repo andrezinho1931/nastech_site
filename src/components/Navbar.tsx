@@ -79,11 +79,51 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-         <a href="#hero" className="nav-link">Início</a>
-          <a href="#why-humanoid" className="nav-link">Benefícios</a>
-          <a href="#features" className="nav-link">Casos de Uso</a>
-          <a href="#contato" className="nav-link">Contato</a>
-        </nav>
+  <a 
+    href="#"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault();
+      scrollToTop();
+    }}
+  >
+    Início
+  </a>
+
+  <a
+    href="#"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault();
+      document.querySelector('#why-humanoid')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+  >
+    Benefícios
+  </a>
+
+  <a
+    href="#"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault();
+      document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+  >
+    Casos de Uso
+  </a>
+
+  <a
+    href="#"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault();
+      document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+  >
+    Contato
+  </a>
+</nav>
+
 
         {/* Mobile menu button - increased touch target */}
         <button 
