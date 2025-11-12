@@ -79,16 +79,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <a 
-            href="#" 
-            className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-            }}
-          >
-            Início
-          </a>
+         <a href="#hero" className="nav-link">Início</a>
           <a href="#why-humanoid" className="nav-link">Benefícios</a>
           <a href="#features" className="nav-link">Casos de Uso</a>
           <a href="#contato" className="nav-link">Contato</a>
