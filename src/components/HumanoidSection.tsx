@@ -217,7 +217,7 @@ const HumanoidSection = () => {
                 <div className="max-w-lg">
                   <div className="text-4xl mb-4">📈</div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
-                    Crescimento <span className="text-[#FC4D0A]">Escalável</span>
+                    Crescimento <span className="text-[#4DBBC0]">Escalável</span>
                   </h3>
                   <p className="text-white/90 text-lg">
                     Processe mais demanda sem contratar mais pessoas. Sua empresa cresce sem complicações.

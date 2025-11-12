@@ -113,7 +113,7 @@ const Hero = () => {
               className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
               style={{ animationDelay: "0.3s" }}
             >
-              Transforme sua empresa com<br className="hidden sm:inline" />
+              Transforme sua empresa com <br className="hidden sm:inline" />
               <span className="text-pulse-500">Automação Inteligente</span>
             </h1>
             
@@ -157,11 +157,11 @@ const Hero = () => {
               style={{ animationDelay: "0.9s" }}
             >
               <span className="flex items-center gap-1">
-                <span className="text-green-500">✓</span> Diagnóstico gratuito
+                <span>✓</span> Diagnóstico gratuito
               </span>
-              <span className="text-gray-400">•</span>
+              <span>•</span>
               <span className="flex items-center gap-1">
-                <span className="text-green-500">✓</span> Resultados em 30 dias
+                <span className="text-500">✓</span> Resultados em 30 dias
               </span>
             </div>
           </div>

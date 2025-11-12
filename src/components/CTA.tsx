@@ -11,15 +11,11 @@ const CTA = () => {
     },
     {
       title: "Suporte Dedicado",
-      description: "Equipa de especialistas disponível 24/7"
+      description: "Equipe de especialistas disponível 24/7"
     },
     {
       title: "Tecnologia de Ponta",
       description: "Uso de IA e Machine Learning para máxima eficiência"
-    },
-    {
-      title: "Garantia de Resultados",
-      description: "Contrato de satisfação ou o seu dinheiro de volta"
     },
     {
       title: "Integração Total",
