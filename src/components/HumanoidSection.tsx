@@ -86,9 +86,10 @@ const HumanoidSection = () => {
     <div 
       ref={sectionRef} 
       className="relative" 
+      id="why-humanoid"
       style={{ height: '300vh' }}
     >
-      <section className="w-full h-screen py-10 md:py-16 sticky top-0 overflow-hidden bg-white" id="why-humanoid">
+      <section className="w-full h-screen py-10 md:py-16 sticky top-0 overflow-hidden bg-white">
         <div className="container px-6 lg:px-8 mx-auto h-full flex flex-col">
           <div className="mb-2 md:mb-3">
             <div className="flex items-center gap-4 mb-2 md:mb-2 pt-8 sm:pt-6 md:pt-4">
@@ -119,7 +120,7 @@ const HumanoidSection = () => {
               <div
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
                 style={{
-                  backgroundImage: "url('/background-section1.png')",
+                  backgroundImage: "url('/background-section1-mixed-color-v2.png')",
                   backgroundSize: "cover",
                   backgroundPosition: "top center",
                   backgroundBlendMode: "overlay"
@@ -159,7 +160,7 @@ const HumanoidSection = () => {
               <div
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
                 style={{
-                  backgroundImage: "url('/background-section2.png')",
+                  backgroundImage: "url('/background-section2-mixed-color.png')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundBlendMode: "overlay"
@@ -199,7 +200,7 @@ const HumanoidSection = () => {
               <div
                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
                 style={{
-                  backgroundImage: "url('/background-section3.png')",
+                  backgroundImage: "url('/background-section3-mixed-color.png')",
                   backgroundSize: "cover",
                   backgroundPosition: "bottom center",
                   backgroundBlendMode: "overlay"

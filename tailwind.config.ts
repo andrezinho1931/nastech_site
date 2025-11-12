@@ -63,7 +63,7 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
 
-        // 💙 Azul-petróleo (nova paleta "pulse")
+        //  Azul-petróleo (nova paleta "pulse")
         pulse: {
           "50":  "#F0FAFB",  // fundo quase branco
           "100": "#E6F7F8",  // fundo suave (chips, destaques)

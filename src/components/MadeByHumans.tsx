@@ -7,12 +7,12 @@ const MadeByHumans = () => {
         
         <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden relative mt-6 sm:mt-8">
           <div className="bg-no-repeat bg-cover bg-center p-4 sm:p-5 min-h-[250px] sm:min-h-[350px] flex flex-col justify-between" style={{
-          backgroundImage: "url('/background-section3.png')"
+          backgroundImage: "url('/background-section3-mixed-color.png')"
         }}>
             <div className="flex items-start justify-start text-white self-start -ml-4 -mt-4 sm:-ml-12 sm:-mt-12">
   <img
     src="/jogu.png"
-    alt="Pulse Robot Logo"
+    alt="Nastech Logo"
     className="h-20 sm:h-28 md:h-36 lg:h-40 w-auto"
   />
 </div>
