@@ -9,7 +9,7 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 import Features from "@/components/Features";
 
 import CTA from "@/components/CTA";
-import Newsletter from "@/components/Newsletter";
+//import Newsletter from "@/components/Newsletter";
 import MadeByHumans from "@/components/MadeByHumans";
 import Footer from "@/components/Footer";
 
@@ -72,7 +72,7 @@ const Index = () => {
 
 <SpecsSection />
         <CTA />
-        <Newsletter />
+        
         <MadeByHumans />
       </main>
       <Footer />

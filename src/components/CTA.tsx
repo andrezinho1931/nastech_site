@@ -1,7 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { Check } from "lucide-react";
 
 const CTA = () => {
+
+    const specs = [
+    {
+      title: "Implementação Rápida",
+      description: "Automações funcionais em até 30 dias"
+    },
+    {
+      title: "Suporte Dedicado",
+      description: "Equipa de especialistas disponível 24/7"
+    },
+    {
+      title: "Tecnologia de Ponta",
+      description: "Uso de IA e Machine Learning para máxima eficiência"
+    },
+    {
+      title: "Garantia de Resultados",
+      description: "Contrato de satisfação ou o seu dinheiro de volta"
+    },
+    {
+      title: "Integração Total",
+      description: "Conexão com mais de 500 ferramentas de mercado"
+    }
+  ];
     const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -23,7 +47,7 @@ const CTA = () => {
   };
 
     const createWhatsAppMessage = () => {
-    return `🤖 *Nova Solicitação - AutomateIA*
+    return `🤖 *Nova Solicitação*
 
 👤 *Nome:* ${formData.fullName}
 📧 *Email:* ${formData.email}
@@ -33,7 +57,7 @@ const CTA = () => {
 ${formData.message ? `💬 *Mensagem:*\n${formData.message}` : ''}
 
 ---
-Solicitação enviada através do site AutomateIA`;
+Solicitação enviada através do Nastech Site`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -73,7 +97,9 @@ Solicitação enviada através do site AutomateIA`;
     }, 1000);
   };
 
-  return <section id="details" className="w-full bg-white py-0">
+
+  
+  return <section id="contato" className="w-full bg-white py-0">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           {/* Left Card - The Details */}
@@ -98,72 +124,27 @@ Solicitação enviada através do site AutomateIA`;
                 Nossa equipe está pronta para entender suas necessidades e criar a solução perfeita para sua empresa.
               </h3>
 
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Height:</span> 5'8"
+                            {/* Specs list */}
+              <div className="space-y-4">
+                {specs.map((spec, index) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="flex items-center justify-center h-6 w-6 rounded-full bg-slate-900">
+                        <Check className="h-4 w-4 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                        {spec.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 mt-1">
+                        {spec.description}
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Capacity:</span> 55lbs
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Weight:</span> 140lbs
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Uptime:</span> 6hr
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Movement:</span> 1.5M/S
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
+
             </div>
           </div>
 
@@ -241,7 +222,7 @@ Solicitação enviada através do site AutomateIA`;
                     type="submit" 
                     className="w-full px-6 py-3 bg-pulse-500 hover:bg-pulse-600 text-white font-medium rounded-full transition-colors duration-300"
                   >
-                    Request access
+                    Solicitar demonstração
                   </button>
                 </div>
               </form>
