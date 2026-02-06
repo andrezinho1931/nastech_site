@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { ChartLineUpIcon, ClipboardTextIcon, EnvelopeSimpleIcon, PhoneCallIcon, PlugsConnectedIcon, RocketLaunchIcon } from "@phosphor-icons/react";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -105,37 +106,37 @@ const Features = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           <FeatureCard
-            icon={<span className="text-2xl">📞</span>}
+            icon={<PhoneCallIcon weight="duotone" size={22} />}
             title="Atendimento Automático"
             description="Responda clientes no WhatsApp 24/7, qualifique leads e agende reuniões automaticamente. Resultado: 80% menos tempo no atendimento."
             index={0}
           />
           <FeatureCard
-            icon={<span className="text-2xl">📊</span>}
+            icon={<ChartLineUpIcon weight="duotone" size={22} />}
             title="Relatórios Inteligentes"
             description="Gere relatórios de vendas, estoque e financeiro automaticamente todos os dias. Resultado: 15 horas economizadas por semana."
             index={1}
           />
           <FeatureCard
-            icon={<span className="text-2xl">📧</span>}
+            icon={<EnvelopeSimpleIcon weight="duotone" size={22} />}
             title="Email Marketing Personalizado"
             description="Envie emails personalizados baseados no comportamento de cada cliente. Resultado: 3x mais conversões."
             index={2}
           />
           <FeatureCard
-            icon={<span className="text-2xl">📋</span>}
+            icon={<ClipboardTextIcon weight="duotone" size={22} />}
             title="Gestão de Pedidos"
             description="Processe pedidos do site direto para o estoque e financeiro automaticamente. Resultado: Zero erros de digitação."
             index={3}
           />
           <FeatureCard
-            icon={<span className="text-2xl">🔗</span>}
+            icon={<PlugsConnectedIcon weight="duotone" size={22} />}
             title="Integração Total"
             description="Conecte todas suas ferramentas em um fluxo único. WhatsApp, email, CRM, planilhas e muito mais."
             index={4}
           />
           <FeatureCard
-            icon={<span className="text-2xl">🚀</span>}
+            icon={<RocketLaunchIcon weight="duotone" size={22} />}
             title="Implementação Rápida"
             description="Desenvolvemos e testamos suas automações em até 30 dias, com acompanhamento total da nossa equipe."
             index={5}

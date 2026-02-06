@@ -1,24 +1,56 @@
 
 import React, { useEffect, useRef, useState } from "react";
+import { ClockIcon, CurrencyDollarIcon, ChartLineUpIcon } from "@phosphor-icons/react";
 
 const HumanoidSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ticking = useRef(false);
   const lastScrollY = useRef(0);
+  const totalCards = 3;
 
   // More responsive timing function with shorter duration
   const cardStyle = {
-    height: '60vh',
-    maxHeight: '600px',
+    height: isMobile ? 'auto' : '60vh',
+    maxHeight: isMobile ? 'none' : '600px',
     borderRadius: '20px',
-    transition: 'transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1)',
-    willChange: 'transform, opacity'
+    transition: isMobile
+      ? 'none'
+      : 'transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1)',
+    willChange: isMobile ? 'auto' : 'transform, opacity'
   };
+  const mobileCardStyle = isMobile
+    ? { minWidth: '100%', scrollSnapAlign: 'start' as const }
+    : {};
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const handleMediaChange = () => setIsMobile(mediaQuery.matches);
+    handleMediaChange();
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleMediaChange);
+    } else {
+      mediaQuery.addListener(handleMediaChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleMediaChange);
+      } else {
+        mediaQuery.removeListener(handleMediaChange);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsIntersecting(true);
+      return;
+    }
+
     // Create intersection observer to detect when section is in view
     const observer = new IntersectionObserver(
       (entries) => {
@@ -75,22 +107,52 @@ const HumanoidSection = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const container = cardsContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const width = container.clientWidth || 1;
+      const index = Math.round(container.scrollLeft / width);
+      setActiveCardIndex(Math.max(0, Math.min(totalCards - 1, index)));
+    };
+
+    handleScroll();
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isMobile, totalCards]);
 
   // Card visibility based on active index instead of direct scroll progress
   const isFirstCardVisible = isIntersecting;
   const isSecondCardVisible = activeCardIndex >= 1;
   const isThirdCardVisible = activeCardIndex >= 2;
+  const scrollToIndex = (index: number) => {
+    const container = cardsContainerRef.current;
+    if (!container) return;
+    container.scrollTo({
+      left: container.clientWidth * index,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div 
       ref={sectionRef} 
       className="relative" 
       id="why-humanoid"
-      style={{ height: '300vh' }}
+      style={{ height: isMobile ? 'auto' : '300vh' }}
     >
-      <section className="w-full h-screen py-10 md:py-16 sticky top-0 overflow-hidden bg-white">
-        <div className="container px-6 lg:px-8 mx-auto h-full flex flex-col">
+      <section className={`w-full py-10 md:py-16 overflow-hidden bg-white ${isMobile ? '' : 'h-screen sticky top-0'}`}>
+        <div className={`container px-6 lg:px-8 mx-auto flex flex-col ${isMobile ? '' : 'h-full'}`}>
           <div className="mb-2 md:mb-3">
             <div className="flex items-center gap-4 mb-2 md:mb-2 pt-8 sm:pt-6 md:pt-4">
               <div className="pulse-chip opacity-0 animate-fade-in" style={{
@@ -106,15 +168,21 @@ const HumanoidSection = () => {
             </h2>
           </div>
           
-          <div ref={cardsContainerRef} className="relative flex-1 perspective-1000">
+          <div
+            ref={cardsContainerRef}
+            className={`relative perspective-1000 ${isMobile ? 'flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4' : 'flex-1'}`}
+          >
             {/* First Card */}
             <div 
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isFirstCardVisible ? 'animate-card-enter' : ''}`} 
+              className={`${isMobile ? 'relative' : 'absolute inset-0'} overflow-hidden shadow-xl ${isFirstCardVisible ? 'animate-card-enter' : ''}`} 
               style={{
                 ...cardStyle,
+                ...mobileCardStyle,
                 zIndex: 10,
-                transform: `translateY(${isFirstCardVisible ? '90px' : '200px'}) scale(0.9)`,
-                opacity: isFirstCardVisible ? 0.9 : 0
+                transform: isMobile
+                  ? 'none'
+                  : `translateY(${isFirstCardVisible ? '90px' : '200px'}) scale(0.9)`,
+                opacity: isMobile ? 1 : isFirstCardVisible ? 0.9 : 0
               }}
             >
               <div
@@ -135,7 +203,9 @@ const HumanoidSection = () => {
               
               <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                 <div className="max-w-lg">
-                  <div className="text-4xl mb-4">⏰</div>
+                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 ring-1 ring-white/30 shadow-[0_0_25px_rgba(77,187,192,0.35)] text-[#4DBBC0]">
+                    <ClockIcon weight="duotone" size={30} />
+                  </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
                     Mais Tempo Livre
                   </h3>
@@ -148,13 +218,16 @@ const HumanoidSection = () => {
             
             {/* Second Card */}
             <div 
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isSecondCardVisible ? 'animate-card-enter' : ''}`} 
+              className={`${isMobile ? 'relative' : 'absolute inset-0'} overflow-hidden shadow-xl ${isSecondCardVisible ? 'animate-card-enter' : ''}`} 
               style={{
                 ...cardStyle,
+                ...mobileCardStyle,
                 zIndex: 20,
-                transform: `translateY(${isSecondCardVisible ? activeCardIndex === 1 ? '55px' : '45px' : '200px'}) scale(0.95)`,
-                opacity: isSecondCardVisible ? 1 : 0,
-                pointerEvents: isSecondCardVisible ? 'auto' : 'none'
+                transform: isMobile
+                  ? 'none'
+                  : `translateY(${isSecondCardVisible ? activeCardIndex === 1 ? '55px' : '45px' : '200px'}) scale(0.95)`,
+                opacity: isMobile ? 1 : isSecondCardVisible ? 1 : 0,
+                pointerEvents: isMobile ? 'auto' : isSecondCardVisible ? 'auto' : 'none'
               }}
             >
               <div
@@ -175,7 +248,9 @@ const HumanoidSection = () => {
               
               <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                 <div className="max-w-lg">
-                  <div className="text-4xl mb-4">💰</div>
+                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 ring-1 ring-white/30 shadow-[0_0_25px_rgba(77,187,192,0.35)] text-[#4DBBC0]">
+                    <CurrencyDollarIcon weight="duotone" size={30} />
+                  </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
                     Redução de Custos
                   </h3>
@@ -188,13 +263,16 @@ const HumanoidSection = () => {
             
             {/* Third Card */}
             <div 
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isThirdCardVisible ? 'animate-card-enter' : ''}`} 
+              className={`${isMobile ? 'relative' : 'absolute inset-0'} overflow-hidden shadow-xl ${isThirdCardVisible ? 'animate-card-enter' : ''}`} 
               style={{
                 ...cardStyle,
+                ...mobileCardStyle,
                 zIndex: 30,
-                transform: `translateY(${isThirdCardVisible ? activeCardIndex === 2 ? '15px' : '0' : '200px'}) scale(1)`,
-                opacity: isThirdCardVisible ? 1 : 0,
-                pointerEvents: isThirdCardVisible ? 'auto' : 'none'
+                transform: isMobile
+                  ? 'none'
+                  : `translateY(${isThirdCardVisible ? activeCardIndex === 2 ? '15px' : '0' : '200px'}) scale(1)`,
+                opacity: isMobile ? 1 : isThirdCardVisible ? 1 : 0,
+                pointerEvents: isMobile ? 'auto' : isThirdCardVisible ? 'auto' : 'none'
               }}
             >
               <div
@@ -215,7 +293,9 @@ const HumanoidSection = () => {
               
               <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                 <div className="max-w-lg">
-                  <div className="text-4xl mb-4">📈</div>
+                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 ring-1 ring-white/30 shadow-[0_0_25px_rgba(77,187,192,0.35)] text-[#4DBBC0]">
+                    <ChartLineUpIcon weight="duotone" size={30} />
+                  </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-display text-white font-bold leading-tight mb-4">
                     Crescimento <span className="text-[#4DBBC0]">Escalável</span>
                   </h3>
@@ -226,6 +306,19 @@ const HumanoidSection = () => {
               </div>
             </div>
           </div>
+          {isMobile && (
+            <div className="flex items-center justify-center gap-2 pb-4">
+              {Array.from({ length: totalCards }).map((_, index) => (
+                <button
+                  key={`benefits-dot-${index}`}
+                  type="button"
+                  onClick={() => scrollToIndex(index)}
+                  className={`h-2.5 w-2.5 rounded-full transition-colors ${activeCardIndex === index ? 'bg-gray-900' : 'bg-gray-300'}`}
+                  aria-label={`Ir para o slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>
